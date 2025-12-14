@@ -16,6 +16,7 @@ type AuthInput struct {
 	Email    string `json:"email" binding:"required"`
 	Password string `json:"password" binding:"required"`
 	Name     string `json:"name"`
+	IsParent bool   `json:"is_parent" binding:"required"`
 }
 
 func Register(c *gin.Context) {
@@ -36,6 +37,7 @@ func Register(c *gin.Context) {
 		Name:    input.Name,
 		Email:   input.Email,
 		Password: string(hashedPassword),
+		IsParent: input.IsParent,
 	}
 
 	if result := config.DB.Create(&user); result.Error != nil {

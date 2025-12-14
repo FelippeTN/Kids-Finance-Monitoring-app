@@ -9,4 +9,5 @@ type User struct {
 	Name 	string 	`json:"name"`
 	Email 	string 	`gorm:"unique" json:"email"`
 	Password string `json:"-"`
+	IsParent bool   `json:"is_parent" gorm:"default:false"`
 }
